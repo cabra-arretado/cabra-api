@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Using Pipenv, don't need reuirements.txt
+requirements.txt
+requirements-dev.txt
+
 # Distribution / packaging
 .Python
 build/
