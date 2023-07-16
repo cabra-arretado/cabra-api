@@ -8,3 +8,9 @@ requirements:
 
 clean:
 	rm -f requirements.txt requirements-dev.txt
+
+docker_image:
+	docker build -t fastapi:latest .
+
+run_docker:
+	docker run -d -p 8000:8000 fastapi:latest
