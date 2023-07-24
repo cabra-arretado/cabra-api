@@ -8,6 +8,9 @@ fastapi = "*"
 uvicorn = "*"
 ipython = "*"
 pydantic = {version = "*", extras = ["email"]}
+sqlalchemy = "*"
+python-dotenv = "*"
+pymysql = "*"
 
 [dev-packages]
 
