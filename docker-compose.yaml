@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  web:
+    image: fastapi:latest
+    ports:
+      - 8000:8000
+  db:
+    image: cabra-sql:latest
