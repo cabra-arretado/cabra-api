@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# MacOS
+.DS_Store
+
 # Using Pipenv, don't need reuirements.txt
 requirements.txt
 requirements-dev.txt
