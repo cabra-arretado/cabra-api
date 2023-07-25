@@ -1,23 +1,23 @@
 """ Entities for the application """
 from datetime import datetime
-from pydantic import BaseModel, EmailStr, Field, SecretStr
-from uuid import UUID, uuid4
+from pydantic import BaseModel, EmailStr,SecretStr
 
 
 class BaseEntity(BaseModel):
 	""" The entity to rule them all  """
-	uuid: UUID = Field(default_factory=uuid4, alias="id", index=True, primary_key=True)
-
 	class Config:
 		""" Pydantic configuration """
 		arbitrary_types_allowed = True
 
-class UserBase(BaseEntity):
+class UserPreCreated(BaseEntity):
 	""" Base user entity """
 	email: EmailStr
 	# TODO: encrypt password
 	password: SecretStr
 
+class User(UserPreCreated):
+	""" User entity with id """
+	id: int
 
 class ProductBase(BaseEntity):
 	""" Base product entity """
@@ -28,5 +28,5 @@ class ProductBase(BaseEntity):
 
 class OrderBase(BaseEntity):
 	""" Base order entity """
-	user: UserBase
+	user: UserPreCreated
 	date_created: datetime

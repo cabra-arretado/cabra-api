@@ -1,4 +1,4 @@
-from utils import get_env
+from database.utils import get_env
 
 import sqlalchemy
 
@@ -15,8 +15,9 @@ env = get_env(test_env)
 engine = sqlalchemy.create_engine(f"mysql+pymysql://{env.get('DB_USERNAME')}:{env.get('DB_PASSWORD')}@{env.get('DB_HOST')}:{env.get('DB_PORT')}/{env.get('DB_DATABASE')}")
 
 # Create a user and insert it on the table
-def create_user(email, password):
+def insert_user(email, password):
 	with engine.connect() as conn:
 		conn.execute(f"INSERT INTO users (email, password) VALUES ('{email}', '{password}')")
-
+		user_id = conn.execute(f"SELECT id FROM users WHERE email = '{email}'").fetchone()
+	return user_id
 

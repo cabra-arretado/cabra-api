@@ -1,10 +1,10 @@
 -- Just an example right now
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
-INSERT INTO users (name, email) VALUES ('John Doe', 'johndoe@example.com');
-INSERT INTO users (name, email) VALUES ('Jane Doe', 'janedoe@example.com');
+INSERT INTO users (email, password) VALUES ('johndoe@example.com', "password123");
+INSERT INTO users (email, password) VALUES ('janedoe@example.com', "password123");
