@@ -1,6 +1,7 @@
 import fastapi
 
 from api.entities import UserBase
+from api.entities import UserCreate
 
 app = fastapi.FastAPI()
 
