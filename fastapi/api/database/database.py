@@ -1,4 +1,4 @@
-from database.utils import get_env
+from .utils import get_env
 
 import sqlalchemy
 
