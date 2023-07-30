@@ -1,4 +1,5 @@
 from .utils import get_env
+from ..entities.entities import User
 
 import sqlalchemy
 
@@ -7,7 +8,7 @@ test_env = {
 "DB_PORT": 3306,
 "DB_USERNAME": "root",
 "DB_PASSWORD": "123456",
-"DB_DATABASE": "cabra-platform",
+"DB_DATABASE": "cabra-api",
 }
 env = get_env(test_env)
 
@@ -20,11 +21,11 @@ def insert_user(email, password):
 		insert_stm = sqlalchemy.text(f"INSERT INTO users (email, password) VALUES ('{email}', '{password}')")
 		conn.execute(insert_stm)
 		conn.commit()
-	# return get_user(email)
+	return get_user(email).id
 
 # Get a user from the database
-def get_user(email: str):
+def get_user(email: str) -> User:
 	get_stm = sqlalchemy.text(f"SELECT * FROM users WHERE email = '{email}'")
 	with engine.connect() as conn:
 		user = conn.execute(get_stm).fetchone()
-	return user
+	return User(id=user[0], email=user[1], password=user[2])
