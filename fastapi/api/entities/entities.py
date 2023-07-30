@@ -13,7 +13,7 @@ class UserPreCreated(BaseEntity):
 	""" Base user entity """
 	email: EmailStr
 	# TODO: encrypt password
-	password: SecretStr
+	password: str
 
 class User(UserPreCreated):
 	""" User entity with id """

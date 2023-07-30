@@ -10,7 +10,7 @@ sql/docker_image: # Build docker image for MySQL server
 	docker build -t cabra-sql:latest ./mysql
 
 sql/run: # Run docker container for MySQL server
-	docker run cabra-sql:latest
+	docker run -p 3306:3306 cabra-sql:latest
 
 sql/update_run: sql/docker_image sql/run # Update docker image and run MySQL container
 
@@ -26,7 +26,7 @@ fastapi/run_docker: # Run docker container for FastAPI server
 fastapi/update_run: fastapi/docker_image fastapi/run_docker # Update docker image and run FastAPI container
 
 fastapi/run: # Run FastAPI server without container
-	cd fastapi && pipenv run uvicorn fastapi.main:app --reload
+	cd fastapi && pipenv run uvicorn main:app --reload
 
 ######################
 
